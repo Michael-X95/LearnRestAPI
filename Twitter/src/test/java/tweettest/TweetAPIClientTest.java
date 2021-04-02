@@ -27,12 +27,12 @@ public class TweetAPIClientTest {
        response.statusCode(200);
         // Verity tweet value
        String actualTweet=response.extract().body().path("text");
-       // Long id= response.extract().body().path("id");
-        //System.out.println(id);
+        Long id= response.extract().body().path("id");
+        System.out.println(id);
      Assert.assertEquals(actualTweet,tweet,"Tweet is not match");
     }
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void testUserCanNotTweetTheSameTweetTwiceInARow() {
         // User sent a tweet
         String tweet = "We are learning Rest API using Rest Assured and our First Tweet Same Tweet";
@@ -48,10 +48,10 @@ public class TweetAPIClientTest {
     }
 
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void testDeleteTweet(){
-        String tweet="We are learning Rest API using Rest Assured and our First Tweet82d120dd-9045-44f3-a3c9-8720409fae20";
-        ValidatableResponse deleteResponse= this.tweetAPIClient.deleteTweet(1376315105131044869l);
+        String tweet="We are learning Rest API using Rest Assured and our First Tweet Same Tweet";
+        ValidatableResponse deleteResponse= this.tweetAPIClient.deleteTweet(1378112991510593537l);
         deleteResponse.statusCode(200);
         String actualTweet= deleteResponse.extract().body().path("text");
         Assert.assertEquals(tweet,actualTweet);
